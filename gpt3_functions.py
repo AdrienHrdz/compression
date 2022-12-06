@@ -1,5 +1,48 @@
 import numpy as np 
 
+def unzigzag(zigzag):
+    # Create an empty 8 by 8 matrix
+    matrix = [[0] * 8 for _ in range(8)]
+
+    # Initialize the variables to keep track of the current position
+    x, y = 0, 0
+
+    # Flag to determine the direction of the zigzag
+    up = True
+
+    # Loop until all values in the zigzag list have been visited
+    for i in range(len(zigzag)):
+        # Get the current value from the zigzag list
+        value = zigzag[i]
+
+        # Update the matrix
+        matrix[x][y] = value
+
+        # Update the position
+        if up:
+            x -= 1
+            y += 1
+            if x < 0:
+                x = 0
+                y += 2
+                up = False
+            if y >= 8:
+                x += 2
+                y -= 1
+                up = False
+        else:
+            x += 1
+            y -= 1
+            if y < 0:
+                y = 0
+                x += 2
+                up = True
+            if x >= 8:
+                x -= 1
+                y += 2
+                up = True
+
+    return matrix
 
 def divide_image(image):
     # Create a list to store the blocks
@@ -72,49 +115,6 @@ def zigzag(matrix):
 
     return zigzag
 
-def unzigzag(zigzag):
-    # Create an empty 8 by 8 matrix
-    matrix = [[0] * 8 for _ in range(8)]
-
-    # Initialize the variables to keep track of the current position
-    x, y = 0, 0
-
-    # Flag to determine the direction of the zigzag
-    up = True
-
-    # Loop until all values in the zigzag list have been visited
-    for i in range(len(zigzag)):
-        # Get the current value from the zigzag list
-        value = zigzag[i]
-
-        # Update the matrix
-        matrix[x][y] = value
-
-        # Update the position
-        if up:
-            x -= 1
-            y += 1
-            if x < 0:
-                x = 0
-                y += 2
-                up = False
-            if y >= 8:
-                x += 2
-                y -= 1
-                up = False
-        else:
-            x += 1
-            y -= 1
-            if y < 0:
-                y = 0
-                x += 2
-                up = True
-            if x >= 8:
-                x -= 1
-                y += 2
-                up = True
-
-    return matrix
 
 def huffman_encode(string):
     """
@@ -209,7 +209,7 @@ def huffman_decode(encoded, frequencies):
     return decoded
 
 
-if __name__ == "__main__":
-    print(huffman_encode.__doc__)
+# if __name__ == "__main__":
+#     print(huffman_encode.__doc__)
     
-    pass
+#     pass
