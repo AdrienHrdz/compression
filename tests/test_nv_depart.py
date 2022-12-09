@@ -4,7 +4,7 @@ import cv2
 import matplotlib.pyplot as plt
 import pywt
 import sys, os
-import gpt3_functions
+import gpt3_functions.gpt3_functions as gpt3_functions
 
 # %%
 # Chargement de l'image

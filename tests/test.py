@@ -4,7 +4,7 @@ import cv2
 import matplotlib.pyplot as plt
 import pywt
 import sys, os
-import gpt3_functions
+import gpt3_functions.gpt3_functions as gpt3_functions
 
 # %% [markdown]
 # ## **Transformation** dans un autre domaine
@@ -380,7 +380,7 @@ def unzigzag_copilot(arr):
     return mat
 
 # %%
-import gpt3_functions
+import gpt3_functions.gpt3_functions as gpt3_functions
 def decodeZZ(arrZZval, arrZZpos):
     imagette = np.zeros((8,8))
     arrZZfullLenght = zeroPaddingArrValues(arrZZval, arrZZpos)
@@ -417,7 +417,7 @@ def reconstruction(imagette88):
     return tmp
 
 # %%
-import gpt3_functions
+import gpt3_functions.gpt3_functions as gpt3_functions
 listBlocrec = list()
 for k,bloc in enumerate(listBloc):
     values,pos = decodeBLOC(bloc)
